@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shin Gaming Center</title>
+<style>
+:root{--bg:#05060b;--panel:#0e1019;--panel2:#151827;--text:#f7f7ff;--muted:#969bb1;--purple:#8b5cf6;--blue:#06b6d4;--line:#24283a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 80% 0%,#4c1d9540,transparent 30%),radial-gradient(circle at 10% 45%,#07598520,transparent 28%),var(--bg);line-height:1.5}
+a{color:inherit;text-decoration:none}.container{width:min(1150px,92%);margin:auto}
+.header{position:sticky;top:0;z-index:50;background:#05060be8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{min-height:72px;display:flex;align-items:center;gap:25px}.logo{font-weight:900;letter-spacing:.5px;white-space:nowrap}.logo span{color:var(--purple)}
+nav{display:flex;gap:24px;margin-left:auto;color:#c7cad8;font-size:14px}nav a:hover{color:white}
+.btn{border:0;cursor:pointer;color:white;font-weight:800;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#2563eb);box-shadow:0 10px 30px #6d28d929;transition:.2s}.btn:hover{transform:translateY(-2px)}
+.secondary{background:var(--panel2);border:1px solid var(--line);box-shadow:none}.menu{display:none;background:none;border:0;color:white;font-size:25px;margin-left:auto}
+.hero{min-height:610px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}
+.badge{display:inline-block;padding:7px 11px;border-radius:99px;border:1px solid #8b5cf655;background:#8b5cf612;color:#cbbcff;font-size:12px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(46px,7vw,82px);line-height:.95;letter-spacing:-4px}h1 span{background:linear-gradient(90deg,#a78bfa,#22d3ee);color:transparent;background-clip:text}
+.hero p{color:var(--muted);max-width:560px;margin:22px 0 28px;font-size:17px}.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{height:420px;position:relative;overflow:hidden;border-radius:28px;border:1px solid #30354b;background:linear-gradient(145deg,#15172a,#090a11)}
+.glow{position:absolute;border-radius:50%;filter:blur(70px)}.g1{width:280px;height:280px;background:var(--purple);opacity:.35;right:-80px;top:-70px}.g2{width:220px;height:220px;background:var(--blue);opacity:.2;left:-80px;bottom:-80px}
+.screen{position:absolute;inset:45px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #ffffff18;border-radius:20px;background:#070911d9;overflow:hidden}
+.symbol{font-size:78px;color:#a78bfa;text-shadow:0 0 35px #8b5cf6;animation:pulse 2.5s infinite}.screen h2{font-size:27px}.screen p{color:var(--muted);font-size:13px}
+.scan{position:absolute;width:100%;height:1px;background:#22d3ee88;box-shadow:0 0 20px #22d3ee;animation:scan 4s linear infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}@keyframes scan{from{top:0}to{top:100%}}
+.section{padding:75px 0}.head{margin-bottom:25px}.head h2{font-size:30px}.head p{color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel),#090b12);transition:.25s}.card:hover{transform:translateY(-6px);border-color:#65559b}
+.game-img{height:170px;display:flex;align-items:end;padding:18px;font-size:26px;font-weight:900;position:relative;overflow:hidden}.game-img:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000c,transparent 75%)}.game-img span{position:relative;z-index:1}
+.valorant{background:linear-gradient(135deg,#32105f,#e11d48)}.fc{background:linear-gradient(135deg,#073b4b,#0891b2)}.minecraft{background:linear-gradient(135deg,#172554,#7c3aed)}
+.body{padding:18px}.body small{color:#a5b4fc;font-size:10px;font-weight:900;letter-spacing:.6px}.body h3{margin:5px 0}.body p{color:var(--muted);font-size:13px}
+.leader{display:grid;gap:10px}.player{display:grid;grid-template-columns:45px 45px 1fr auto;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.rank{color:#a78bfa}.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--blue))}.player small{display:block;color:var(--muted);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:16px}.stat b{font-size:28px;display:block}.stat span{color:var(--muted);font-size:12px}
+.search{display:flex;gap:10px;margin-top:22px}.search input{flex:1;color:white;outline:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+footer{text-align:center;color:var(--muted);border-top:1px solid var(--line);padding:30px;font-size:13px}
+.toast{position:fixed;right:20px;bottom:20px;z-index:100;background:#151827;border:1px solid #3b4057;padding:13px 17px;border-radius:12px;opacity:0;transform:translateY(15px);transition:.25s}.toast.show{opacity:1;transform:none}.hidden{display:none!important}
+@media(max-width:800px){.nav{position:relative}.menu{display:block}nav{display:none;position:absolute;top:68px;left:0;right:0;padding:15px;margin:0;flex-direction:column;gap:13px;background:#090a11f5;border:1px solid var(--line);border-radius:14px}nav.open{display:flex}.hero{grid-template-columns:1fr;padding:50px 0}.hero-art{height:300px}.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.section{padding:55px 0}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="container nav">
+<a class="logo" href="#home">SHIN <span>GAMING CENTER</span></a>
+<button class="menu" id="menu">☰</button>
+<nav id="nav"><a href="#home">Home</a><a href="#games">Games</a><a href="#news">News</a><a href="#leaderboard">Leaderboard</a><a href="#community">Community</a></nav>
+<button class="btn" id="join">Join Now</button>
+</div></header>
+
+<main>
+<section id="home" class="hero container">
+<div><div class="badge">✦ NEXT LEVEL GAMING HUB</div><h1>PLAY.<br><span>COMPETE.</span><br>DOMINATE.</h1><p>Temukan game favoritmu, ikuti berita gaming, pantau leaderboard, dan gabung bersama komunitas di Shin Gaming Center.</p><div class="actions"><a class="btn" href="#games">Explore Games</a><a class="btn secondary" href="#leaderboard">Leaderboard</a></div></div>
+<div class="hero-art"><div class="glow g1"></div><div class="glow g2"></div><div class="screen"><div class="symbol">✦</div><h2>SHIN GAMING</h2><p>Your gaming universe starts here.</p><div class="scan"></div></div></div>
+</section>
+
+<section id="games" class="section container"><div class="head"><h2>Featured Games</h2><p>Game pilihan untuk mengisi gaming session kamu.</p></div><div class="cards">
+<article class="card item" data-search="valorant fps competitive"><div class="game-img valorant"><span>VALORANT</span></div><div class="body"><small>FPS • COMPETITIVE</small><h3>Valorant</h3><p>5v5 tactical shooter dengan agent dan kemampuan unik.</p></div></article>
+<article class="card item" data-search="fc football sports"><div class="game-img fc"><span>FC</span></div><div class="body"><small>SPORTS • FOOTBALL</small><h3>EA SPORTS FC</h3><p>Bentuk squad impian dan buktikan skill di lapangan.</p></div></article>
+<article class="card item" data-search="minecraft sandbox survival"><div class="game-img minecraft"><span>MINECRAFT</span></div><div class="body"><small>SANDBOX • SURVIVAL</small><h3>Minecraft</h3><p>Bangun, eksplorasi, dan bertahan hidup tanpa batas.</p></div></article>
+</div></section>
+
+<section id="news" class="section container"><div class="head"><h2>Gaming News</h2><p>Update singkat seputar dunia gaming.</p></div><div class="cards">
+<article class="card item" data-search="update patch meta"><div class="body"><small>UPDATE</small><h3>Meta baru mulai berubah</h3><p>Perubahan patch membuat strategi competitive semakin menarik.</p></div></article>
+<article class="card item" data-search="community tournament shin cup"><div class="body"><small>COMMUNITY</small><h3>Turnamen Shin Cup</h3><p>Kompetisi komunitas untuk mencari squad dengan skill terbaik.</p></div></article>
+<article class="card item" data-search="tips rank"><div class="body"><small>TIPS</small><h3>Naik rank lebih konsisten</h3><p>Fokus pada komunikasi, positioning, dan evaluasi permainan.</p></div></article>
+</div></section>
+
+<section id="leaderboard" class="section container"><div class="head"><h2>Leaderboard</h2><p>Top player minggu ini.</p></div><div class="leader">
+<div class="player"><b class="rank">#1</b><div class="avatar">R</div><div><strong>Rexx</strong><small>Radiant • 2,840 RR</small></div><b>2,840</b></div>
+<div class="player"><b class="rank">#2</b><div class="avatar">K</div><div><strong>Kuro</strong><small>Immortal 3 • 2,610 RR</small></div><b>2,610</b></div>
+<div class="player"><b class="rank">#3</b><div class="avatar">S</div><div><strong>Shiro</strong><small>Immortal 3 • 2,480 RR</small></div><b>2,480</b></div>
+</div></section>
+
+<section id="community" class="section container"><div class="head"><h2>Community</h2><p>Shin Gaming Center terus berkembang bersama gamer.</p></div><div class="stats">
+<div class="stat"><b>12K+</b><span>Members</span></div><div class="stat"><b>84</b><span>Active Tournaments</span></div><div class="stat"><b>320+</b><span>Daily Matches</span></div><div class="stat"><b>24/7</b><span>Gaming Community</span></div>
+</div><div class="search"><input id="search" placeholder="Cari game atau berita..."><button class="btn" id="searchBtn">Search</button></div></section>
+</main>
+<footer>© 2026 Shin Gaming Center • Built for gamers.</footer>
+<div id="toast" class="toast"></div>
+
+<script>
+const toast=document.getElementById("toast"),nav=document.getElementById("nav");
+function show(msg){toast.textContent=msg;toast.classList.add("show");clearTimeout(window.t);window.t=setTimeout(()=>toast.classList.remove("show"),2300)}
+document.getElementById("menu").onclick=()=>nav.classList.toggle("open");
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>nav.classList.remove("open"));
+document.getElementById("join").onclick=()=>show("Welcome to Shin Gaming Center! 🎮");
+function search(){let q=document.getElementById("search").value.toLowerCase().trim();document.querySelectorAll(".item").forEach(x=>x.classList.toggle("hidden",q&&!((x.innerText+" "+x.dataset.search).toLowerCase().includes(q))));show(q?"Mencari: "+q:"Pencarian dikosongkan")}
+document.getElementById("searchBtn").onclick=search;
+document.getElementById("search").onkeydown=e=>{if(e.key==="Enter")search()};
+</script>
+</body>
+</html>
